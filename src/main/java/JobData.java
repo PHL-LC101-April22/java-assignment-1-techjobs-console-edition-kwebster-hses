@@ -72,6 +72,12 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+       // value = value.toLowerCase();
+       // column = column.toLowerCase();
+        HashMap<String, String> moons = new HashMap<>();
+        moons.put("nothing", "no value");
+        String s = "Ain't Shit to return";
+
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
@@ -82,6 +88,11 @@ public class JobData {
             if (aValue.contains(value)) {
                 jobs.add(row);
             }
+            else{
+                jobs.add(moons);
+                break;
+            }
+
         }
 
         return jobs;
@@ -97,10 +108,43 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+        // value = value.toLowerCase();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+
+        HashMap<String, String> moons = new HashMap<>();
+        moons.put("nothing", "no value");
+
+        // noValue.put("none":"something");
+
+        for (HashMap<String, String> row : allJobs) {
+            for (String i : row.keySet()) {
+                String rowVal = row.get(i);
+                if (rowVal.toLowerCase().contains(value.toLowerCase())) {
+                    jobs.add(row);
+                    break;
+                }
+                else{
+                    jobs.add(moons);
+                    break;
+                }
+            }
+        }
+
+            return jobs;
+        }
+
+    /**
+     *for (HashMap<String, String> inSomeJob : someJobs) {
+     *             System.out.println("\n" );
+     *             System.out.println("*************");
+     *             for (Map.Entry<String, String> student : inSomeJob.entrySet()) {
+     *                 System.out.println(student.getKey() + " - " + student.getValue());
+     */
 
         // TODO - implement this method
-        return null;
-    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -128,7 +172,9 @@ public class JobData {
                 HashMap<String, String> newJob = new HashMap<>();
 
                 for (String headerLabel : headers) {
-                    newJob.put(headerLabel, record.get(headerLabel));
+                    // Ronnie removed tolowercase to see if searches appear
+                    //System.out.println(record.get(headerLabel));
+                    newJob.put(headerLabel, record.get(headerLabel).toLowerCase());
                 }
 
                 allJobs.add(newJob);
