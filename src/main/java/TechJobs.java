@@ -50,7 +50,7 @@ public class TechJobs {
 
                     // Print list of skills, employers, etc
                     for (String item : results) {
-                        item = item.toLowerCase();
+
                         System.out.println(item);
                     }
                 }
@@ -134,7 +134,7 @@ public class TechJobs {
             System.out.println("\n" );
             System.out.println("*************");
             for (Map.Entry<String, String> student : inSomeJob.entrySet()) {
-                System.out.println(student.getKey().toLowerCase() + " - " + student.getValue().toLowerCase());
+                System.out.println(student.getKey().toLowerCase() + " - PRINTING FROM PRINTJOBS " + student.getValue().toLowerCase());
 
 
 
