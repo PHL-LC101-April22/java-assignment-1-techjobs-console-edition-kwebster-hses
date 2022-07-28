@@ -188,7 +188,7 @@ public class JobData {
                 if(rowVal.contains(value)) {
                     // if dictionary contains the input from mainclass add it
                     jobs.add(row);
-                    break;
+
                 } else {
 
                     moons.put("none", "something");

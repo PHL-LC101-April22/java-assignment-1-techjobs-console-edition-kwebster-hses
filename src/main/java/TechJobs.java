@@ -101,13 +101,13 @@ public class TechJobs {
 
             if (in.hasNextInt()) {
                 choiceIdx = in.nextInt();
-                System.out.println( "LOOK HERE FOR IN.NEXTLINE + CHOICE "+ choiceIdx);
+              //  System.out.println( "LOOK HERE FOR IN.NEXTLINE + CHOICE "+ choiceIdx);
                 in.nextLine();
             }
             else {
                 String line = in.nextLine();
                 line = line.toLowerCase();
-                System.out.println( "LOOK HERE FOR LINE.tolower "+ line);
+               // System.out.println( "LOOK HERE FOR LINE.tolower "+ line);
                 boolean shouldQuit = line.equals("x");
                 if (shouldQuit) {
                     return null;
@@ -122,7 +122,7 @@ public class TechJobs {
             }
 
         } while(!validChoice);
-        System.out.println("seeing this means choicekeys was returned !!! " + choiceKeys[choiceIdx]);
+        //System.out.println("seeing this means choicekeys was returned !!! " + choiceKeys[choiceIdx]);
 
         return choiceKeys[choiceIdx];
     }
@@ -134,7 +134,8 @@ public class TechJobs {
             System.out.println("\n" );
             System.out.println("*************");
             for (Map.Entry<String, String> student : inSomeJob.entrySet()) {
-                System.out.println(student.getKey().toLowerCase() + " - PRINTING FROM PRINTJOBS " + student.getValue().toLowerCase());
+                System.out.println(student.getKey().toLowerCase()+ " "  + student.getValue().toLowerCase());
+                //" - PRINTING FROM PRINTJOBS "
 
 
 
