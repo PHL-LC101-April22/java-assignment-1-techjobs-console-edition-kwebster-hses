@@ -36,6 +36,7 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
+            aValue = aValue.toLowerCase();
 
             if (!values.contains(aValue)) {
                 values.add(aValue);
@@ -72,16 +73,50 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+       // value = value.toLowerCase();
+       // column = column.toLowerCase();
+        /* String searchField = getUserSelection("Search by:", columnChoices);
+        * System.out.println("\nSearch term:");
+                String searchTerm = in.nextLine();
+                searchTerm = searchTerm.toLowerCase();
+                *
+                *   if (searchField.equals("all")) {
+                    printJobs(JobData.findByValue(searchTerm));
+                } else {
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm String searchTerm = in.nextLine();));
+                }
+                *
+                */
+        HashMap<String, String> moons = new HashMap<>();
+
+
+
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            aValue = aValue.toLowerCase();
+
 
             if (aValue.contains(value)) {
                 jobs.add(row);
+
+
+
+
             }
+            else{
+                moons.put("nothing", "no value");
+
+
+            }
+
+
+        }
+        if(jobs.size() < 1){
+            jobs.add(moons);
         }
 
         return jobs;
@@ -97,10 +132,105 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+        // value = value.toLowerCase();
+        /* String searchField = getUserSelection("Search by:", columnChoices);
+        * System.out.println("\nSearch term:");
+                String searchTerm = in.nextLine();
+                searchTerm = searchTerm.toLowerCase();
+                *
+                *   if (searchField.equals("all")) {
+                    printJobs(JobData.findByValue(searchTerm));
+                } else {
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                }
+                * */
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+
+        //0ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+       /* HashMap<String, String> noValue = new HashMap<>();
+
+        noValue.put("none","something");
+
+        for (HashMap<String, String> row : allJobs) {
+
+            String aValue = row.get(value);
+
+
+            if (aValue.contains(value)) {
+                jobs.add(row);
+            }
+            else{
+                System.out.println(aValue);
+                jobs.add(noValue);
+
+            }
+
+        }
+
+        return jobs;
+    } */
+
+        // noValue.put("none":"something");
+
+        HashMap<String, String> moons = new HashMap<>();
+
+
+
+        for (HashMap<String, String> row : allJobs) {
+            for (String i : row.keySet()) {
+                // accessing the hashmap / dictionary at top level
+                String rowVal = row.get(i);
+                // grabs the value of the dictionary key
+                rowVal = rowVal.toLowerCase();
+
+                if(rowVal.contains(value)) {
+                    // if dictionary contains the input from mainclass add it
+                    jobs.add(row);
+                    break;
+                } else {
+
+                    moons.put("none", "something");
+
+
+
+                }
+            }
+
+        }
+               /* if(rowVal.toLowerCase().contains(value.toLowerCase())) {
+                    jobs.add(row);
+                    break;
+                } else {
+                    jobs.add(moons);
+                    break;
+                }
+            }
+
+        } */
+
+        //used this if statement as a means of addign moons otherwise the code would contain things I dont want such
+        // such as no value when values are clealy appering
+        if(jobs.size() < 1){
+            jobs.add(moons);
+        }
+        return jobs;
+    }
+
+
+
+
+    /**
+     *for (HashMap<String, String> inSomeJob : someJobs) {
+     *             System.out.println("\n" );
+     *             System.out.println("*************");
+     *             for (Map.Entry<String, String> student : inSomeJob.entrySet()) {
+     *                 System.out.println(student.getKey() + " - " + student.getValue());
+     */
 
         // TODO - implement this method
-        return null;
-    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -128,6 +258,8 @@ public class JobData {
                 HashMap<String, String> newJob = new HashMap<>();
 
                 for (String headerLabel : headers) {
+                    // Ronnie removed tolowercase to see if searches appear
+                    //System.out.println(record.get(headerLabel));
                     newJob.put(headerLabel, record.get(headerLabel));
                 }
 
